@@ -272,7 +272,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header"
         android:background="@android:color/white"
-        app:itemIconTint="@color/colorPrimary"
-        app:itemTextColor="@color/colorPrimary"/>
+        app:itemIconTint="@color/brand_background"
+        app:itemTextColor="@color/brand_background"/>
 
 </android.support.v4.widget.DrawerLayout>

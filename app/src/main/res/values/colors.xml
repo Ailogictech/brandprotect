@@ -39,5 +39,6 @@
 
     <color name="brand_top_color">#93C4ED</color>
     <color name="brand_background">#1b222c</color>
+    <color name="brand_accent">#3b424f</color>
 
 </resources>
