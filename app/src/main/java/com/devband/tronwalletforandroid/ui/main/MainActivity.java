@@ -665,8 +665,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     public void onEditAccountNameImageClick() {
         new MaterialDialog.Builder(this)
                 .title(R.string.title_rename_account)
-                .titleColorRes(R.color.colorAccent)
-                .contentColorRes(R.color.colorAccent)
+                .titleColorRes(R.color.brand_background)
+                .contentColorRes(R.color.brand_background)
                 .backgroundColorRes(android.R.color.white)
                 .inputRangeRes(2, 20, android.R.color.white)
                 .input(getString(R.string.rename_account_hint), mLoginAccountName, new MaterialDialog.InputCallback() {
