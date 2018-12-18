@@ -330,4 +330,5 @@
     <string name="remove_account_error_msg">If you have only one account, you can not delete it.</string>
     <string name="create_certificate_store">Create certificate store</string>
     <string name="create_wallet">Create Wallet</string>
+    <string name="certificate_stores">Create certificate stores</string>
 </resources>
