@@ -473,8 +473,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     private void createAccount() {
         new MaterialDialog.Builder(this)
                 .title(R.string.title_create_account)
-                .titleColorRes(R.color.colorAccent)
-                .contentColorRes(R.color.colorAccent)
+                .titleColorRes(R.color.brand_background)
+                .contentColorRes(R.color.brand_background)
                 .backgroundColorRes(android.R.color.white)
                 .inputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
                 .input(getString(R.string.create_account_password_hint), "", (dialog, input) -> {
@@ -486,8 +486,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     private void importAccount() {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
                 .title(R.string.title_import_account)
-                .titleColorRes(R.color.colorAccent)
-                .contentColorRes(R.color.colorAccent)
+                .titleColorRes(R.color.brand_background)
+                .contentColorRes(R.color.brand_background)
                 .backgroundColorRes(android.R.color.white)
                 .customView(R.layout.dialog_import_private_key, false);
 
