@@ -2,8 +2,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/brand_background</item>
+        <item name="colorPrimaryDark">@color/brand_top_color</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_24dp</item>
     </style>

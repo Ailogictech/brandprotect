@@ -37,4 +37,7 @@
     <color name="vote_up_color">#029f2a</color>
     <color name="default_text_color">#808080</color>
 
+    <color name="brand_top_color">#93C4ED</color>
+    <color name="brand_background">#1b222c</color>
+
 </resources>
