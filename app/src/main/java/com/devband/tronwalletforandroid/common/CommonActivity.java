@@ -91,8 +91,8 @@ public class CommonActivity extends DaggerAppCompatActivity {
         }
 
         mMaterialDialog = builder
-                .titleColorRes(R.color.colorAccent)
-                .contentColorRes(R.color.colorAccent)
+                .titleColorRes(R.color.brand_background)
+                .contentColorRes(R.color.brand_background)
                 .backgroundColorRes(android.R.color.white)
                 .content(msg)
                 .progress(true,0)

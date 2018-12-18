@@ -399,21 +399,21 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
             case R.id.drawer_item_send_tron:
                 startActivity(SendTokenActivity.class);
                 break;
-            case R.id.drawer_item_vote:
-                startActivity(VoteActivity.class);
-                break;
-            case R.id.drawer_item_tokens:
-                startActivity(TokenActivity.class);
-                break;
-            case R.id.drawer_item_block_explorer:
-                startActivity(BlockExplorerActivity.class);
-                break;
+//            case R.id.drawer_item_vote:
+//                startActivity(VoteActivity.class);
+//                break;
+//            case R.id.drawer_item_tokens:
+//                startActivity(TokenActivity.class);
+//                break;
+//            case R.id.drawer_item_block_explorer:
+//                startActivity(BlockExplorerActivity.class);
+//                break;
 //            case R.id.drawer_item_exchange:
 //                startActivity(ExchangeActivity.class);
 //                break;
-            case R.id.drawer_item_more:
-                 startActivity(MoreActivity.class);
-                break;
+//            case R.id.drawer_item_more:
+//                 startActivity(MoreActivity.class);
+//                break;
             case R.id.drawer_item_logout:
                 logout();
                 break;
@@ -424,8 +424,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     private void changePassword() {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
                 .title(R.string.change_password)
-                .titleColorRes(R.color.colorAccent)
-                .contentColorRes(R.color.colorAccent)
+                .titleColorRes(R.color.brand_background)
+                .contentColorRes(R.color.brand_background)
                 .backgroundColorRes(android.R.color.white)
                 .inputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
                 .customView(R.layout.dialog_change_password, true)

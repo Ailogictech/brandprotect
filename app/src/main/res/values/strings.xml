@@ -331,4 +331,6 @@
     <string name="create_certificate_store">Create certificate store</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="certificate_stores">Create certificate stores</string>
+    <string name="navigation_get_certificate">Get a certificate</string>
+    <string name="navigation_send_certificate">Send certificate</string>
 </resources>

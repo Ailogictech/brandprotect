@@ -218,7 +218,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_margin="5dp"
-                        android:background="@color/colorAccent"
+                        android:background="@color/brand_background"
                         android:textColor="@android:color/white"
                         android:text="@string/export_private_key_text" />
                 </LinearLayout>
@@ -317,7 +317,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_margin="5dp"
-                        android:background="@color/colorAccent"
+                        android:background="@color/brand_background"
                         android:textColor="@android:color/white"
                         android:text="@string/freeze_text" />
                 </LinearLayout>
