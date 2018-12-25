@@ -89,20 +89,23 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     @BindView(R.id.login_account_name_text)
     TextView mMainTitleText;
 
-    @BindView(R.id.login_account_balance_text)
-    TextView mLoginAccountBalanceText;
+//    @BindView(R.id.login_account_balance_text)
+//    TextView mLoginAccountBalanceText;
 
-    @BindView(R.id.login_account_price_text)
-    TextView mLoginAccountPriceText;
+//    @BindView(R.id.login_account_price_text)
+//    TextView mLoginAccountPriceText;
 
-    @BindView(R.id.login_frozen_balance_text)
-    TextView mLoginFrozenBalanceText;
+//    @BindView(R.id.login_frozen_balance_text)
+//    TextView mLoginFrozenBalanceText;
 
-    @BindView(R.id.login_bandwidth_text)
-    TextView mLoginBandwidthText;
+//    @BindView(R.id.login_bandwidth_text)
+//    TextView mLoginBandwidthText;
 
-    @BindView(R.id.price_help_image)
-    ImageView mPriceHelpImage;
+//    @BindView(R.id.price_help_image)
+//    ImageView mPriceHelpImage;
+
+    @BindView(R.id.brandImage)
+    ImageView brandImage;
 
     @BindView(R.id.edit_account_name_image)
     ImageView mEditAccountNameImage;
@@ -113,8 +116,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     @BindView(R.id.my_token_listview)
     RecyclerView mMyTokenListView;
 
-    @BindView(R.id.check_favorite_tokens)
-    CheckBox mShowOnlyFavoritesCheckBox;
+//    @BindView(R.id.check_favorite_tokens)
+//    CheckBox mShowOnlyFavoritesCheckBox;
 
     Spinner mAccountSpinner;
 
@@ -177,33 +180,35 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
                 if (scrollRange + verticalOffset == 0) {
                     mToolbarLayout.setTitle(mLoginAccountName);
                     mMainTitleText.setVisibility(View.GONE);
-                    mLoginAccountBalanceText.setVisibility(View.GONE);
-                    mLoginAccountPriceText.setVisibility(View.GONE);
-                    mPriceHelpImage.setVisibility(View.GONE);
+                    brandImage.setVisibility(View.GONE);
+//                    mLoginAccountBalanceText.setVisibility(View.GONE);
+//                    mLoginAccountPriceText.setVisibility(View.GONE);
+//                    mPriceHelpImage.setVisibility(View.GONE);
                     mEditAccountNameImage.setVisibility(View.GONE);
-                    mLoginFrozenBalanceText.setVisibility(View.GONE);
-                    mLoginBandwidthText.setVisibility(View.GONE);
+//                    mLoginFrozenBalanceText.setVisibility(View.GONE);
+//                    mLoginBandwidthText.setVisibility(View.GONE);
                     isShow = true;
                 } else if(isShow) {
                     mToolbarLayout.setTitle("");
                     mMainTitleText.setVisibility(View.VISIBLE);
-                    mLoginAccountBalanceText.setVisibility(View.VISIBLE);
-                    mLoginAccountPriceText.setVisibility(View.VISIBLE);
-                    mPriceHelpImage.setVisibility(View.VISIBLE);
+                    brandImage.setVisibility(View.VISIBLE);
+//                    mLoginAccountBalanceText.setVisibility(View.VISIBLE);
+//                    mLoginAccountPriceText.setVisibility(View.VISIBLE);
+//                    mPriceHelpImage.setVisibility(View.VISIBLE);
                     mEditAccountNameImage.setVisibility(View.VISIBLE);
-                    mLoginFrozenBalanceText.setVisibility(View.VISIBLE);
-                    mLoginBandwidthText.setVisibility(View.VISIBLE);
+//                    mLoginFrozenBalanceText.setVisibility(View.VISIBLE);
+//                    mLoginBandwidthText.setVisibility(View.VISIBLE);
                     isShow = false;
                 }
             }
         });
 
-        mShowOnlyFavoritesCheckBox.setOnCheckedChangeListener((view, isChecked) -> {
-            mMainPresenter.setOnlyFavorites(isChecked);
-
-            mShowOnlyFavoritesCheckBox.setEnabled(false);
-            checkLoginState();
-        });
+//        mShowOnlyFavoritesCheckBox.setOnCheckedChangeListener((view, isChecked) -> {
+//            mMainPresenter.setOnlyFavorites(isChecked);
+//
+//            mShowOnlyFavoritesCheckBox.setEnabled(false);
+//            checkLoginState();
+//        });
 
         initAccountList(false);
     }
@@ -331,7 +336,7 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
                 mAccountAdapter.notifyDataSetChanged();
             }, (e) -> {});
 
-            mShowOnlyFavoritesCheckBox.setChecked(mMainPresenter.getIsFavoritesTokens());
+//            mShowOnlyFavoritesCheckBox.setChecked(mMainPresenter.getIsFavoritesTokens());
         } else {
             finishActivity();
             startActivity(LoginActivity.class);
@@ -521,7 +526,7 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     @Override
     public void displayAccountInfo(@NonNull TronAccount account) {
         mLoginTronAccount = account;
-        mShowOnlyFavoritesCheckBox.setEnabled(true);
+//        mShowOnlyFavoritesCheckBox.setEnabled(true);
 
         if (mLoginTronAccount.getAssetList().isEmpty()) {
             mNoTokenLayout.setVisibility(View.VISIBLE);
@@ -543,9 +548,9 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
         double fz = frozenBalance / Constants.ONE_TRX;
         double bandwidth = account.getBandwidth();
 
-        mLoginAccountBalanceText.setText(Constants.tronBalanceFormat.format(balance) + " " + getString(R.string.currency_text));
-        mLoginFrozenBalanceText.setText(Constants.numberFormat.format(fz));
-        mLoginBandwidthText.setText(Constants.numberFormat.format(bandwidth));
+//        mLoginAccountBalanceText.setText(Constants.tronBalanceFormat.format(balance) + " " + getString(R.string.currency_text));
+//        mLoginFrozenBalanceText.setText(Constants.numberFormat.format(fz));
+//        mLoginBandwidthText.setText(Constants.numberFormat.format(bandwidth));
 
         mLoadingAccountInfo = false;
 
@@ -557,13 +562,13 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     public void setTronMarketInfo(CoinMarketCap coinMarketCap) {
         double balance = ((double) mLoginTronAccount.getBalance()) / Constants.ONE_TRX;
 
-        mLoginAccountPriceText.setText("(" + Constants.usdFormat.format(balance * Double.parseDouble(coinMarketCap.getPriceUsd()))
-                + " " + getString(R.string.price_text) + ")");
+//        mLoginAccountPriceText.setText("(" + Constants.usdFormat.format(balance * Double.parseDouble(coinMarketCap.getPriceUsd()))
+//                + " " + getString(R.string.price_text) + ")");
 
         mCoinMarketCapPriceInfo = coinMarketCap;
 
-        mPriceHelpImage.setVisibility(View.VISIBLE);
-        mLoginAccountPriceText.setVisibility(View.VISIBLE);
+//        mPriceHelpImage.setVisibility(View.VISIBLE);
+//        mLoginAccountPriceText.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -579,8 +584,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
         new MaterialDialog.Builder(MainActivity.this)
                 .title(getString(R.string.backup_title))
                 .content(getString(R.string.create_account_backup_msg))
-                .titleColorRes(R.color.colorAccent)
-                .contentColorRes(android.R.color.black)
+                .titleColorRes(R.color.brand_background)
+                .contentColorRes(R.color.brand_background)
                 .backgroundColorRes(android.R.color.white)
                 .positiveText(R.string.close_text)
                 .autoDismiss(true)
@@ -613,7 +618,7 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
     @Override
     public void connectionError() {
         mLoadingAccountInfo = false;
-        mShowOnlyFavoritesCheckBox.setEnabled(true);
+//        mShowOnlyFavoritesCheckBox.setEnabled(true);
         Toast.makeText(MainActivity.this, getString(R.string.connection_error_msg),
                 Toast.LENGTH_SHORT).show();
     }
@@ -623,40 +628,40 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
         checkLoginState();
     }
 
-    @OnClick({ R.id.login_account_price_layout })
-    public void onPriceHelpImageClick() {
-        StringBuilder sb = new StringBuilder();
-
-        if (mCoinMarketCapPriceInfo == null) {
-            return;
-        }
-
-        Date updated = new Date(Long.parseLong(mCoinMarketCapPriceInfo.getLastUpdated()) * 1_000);
-
-        sb.append("Price : ")
-                .append(mCoinMarketCapPriceInfo.getPriceUsd())
-                .append(" USD (")
-                .append("-".equals(mCoinMarketCapPriceInfo.getPercentChange24h().substring(0, 1)) ?
-                        mCoinMarketCapPriceInfo.getPercentChange24h() :
-                        "+" + mCoinMarketCapPriceInfo.getPercentChange24h()
-                )
-                .append("%)\nLast updated : ")
-                .append(Constants.sdf.format(updated))
-                .append("\nFrom CoinMarketCap");
-
-        hideDialog();
-
-        new MaterialDialog.Builder(MainActivity.this)
-                .title(getString(R.string.tron_price_title))
-                .content(sb.toString())
-                .titleColorRes(android.R.color.black)
-                .contentColorRes(android.R.color.black)
-                .backgroundColorRes(android.R.color.white)
-                .positiveText(R.string.close_text)
-                .autoDismiss(true)
-                .build()
-                .show();
-    }
+//    @OnClick({ R.id.login_account_price_layout })
+//    public void onPriceHelpImageClick() {
+//        StringBuilder sb = new StringBuilder();
+//
+//        if (mCoinMarketCapPriceInfo == null) {
+//            return;
+//        }
+//
+//        Date updated = new Date(Long.parseLong(mCoinMarketCapPriceInfo.getLastUpdated()) * 1_000);
+//
+//        sb.append("Price : ")
+//                .append(mCoinMarketCapPriceInfo.getPriceUsd())
+//                .append(" USD (")
+//                .append("-".equals(mCoinMarketCapPriceInfo.getPercentChange24h().substring(0, 1)) ?
+//                        mCoinMarketCapPriceInfo.getPercentChange24h() :
+//                        "+" + mCoinMarketCapPriceInfo.getPercentChange24h()
+//                )
+//                .append("%)\nLast updated : ")
+//                .append(Constants.sdf.format(updated))
+//                .append("\nFrom CoinMarketCap");
+//
+//        hideDialog();
+//
+//        new MaterialDialog.Builder(MainActivity.this)
+//                .title(getString(R.string.tron_price_title))
+//                .content(sb.toString())
+//                .titleColorRes(android.R.color.black)
+//                .contentColorRes(android.R.color.black)
+//                .backgroundColorRes(android.R.color.white)
+//                .positiveText(R.string.close_text)
+//                .autoDismiss(true)
+//                .build()
+//                .show();
+//    }
 
     @OnClick(R.id.edit_account_name_image)
     public void onEditAccountNameImageClick() {

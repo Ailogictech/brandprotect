@@ -59,9 +59,9 @@ public class ImportPrivateKeyActivity extends CommonActivity implements ImportPr
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.title_create_wallet);
-        }
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setTitle(R.string.title_create_wallet);
+//        }
 
         mImportPrivateKeyPresenter.onCreate();
 

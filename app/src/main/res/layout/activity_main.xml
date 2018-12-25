@@ -1,5 +1,4 @@
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,7 +32,7 @@
                     android:background="?attr/colorPrimary"
                     app:layout_collapseMode="pin"
                     app:subtitleTextColor="@android:color/white"
-                    app:titleTextColor="@android:color/white"/>
+                    app:titleTextColor="@android:color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -44,11 +43,13 @@
                     android:paddingBottom="10dp"
                     app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.7">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/login_account_name_text"
                             android:layout_width="wrap_content"
@@ -65,111 +66,118 @@
                             app:srcCompat="@drawable/ic_pencil" />
                     </LinearLayout>
 
-                    <TextView
+                    <ImageView
+                        android:id="@+id/brandImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:textColor="@color/main_sub_title_color"
-                        android:textSize="12sp"
-                        android:text="@string/current_balance_text" />
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/brand" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <TextView
-                            android:id="@+id/login_account_balance_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            tools:text="90,000,000,000 TRX" />
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:textColor="@color/main_sub_title_color"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:text="@string/current_balance_text" />-->
 
-                        <LinearLayout
-                            android:id="@+id/login_account_price_layout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:id="@+id/login_account_price_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="16sp"
-                                android:textColor="@android:color/white"
-                                android:visibility="gone"
-                                tools:text="(10000.000 USD)" />
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center">-->
+                    <!--<TextView-->
+                    <!--android:id="@+id/login_account_balance_text"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="22sp"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--tools:text="90,000,000,000 TRX" />-->
 
-                            <ImageView
-                                android:id="@+id/price_help_image"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_marginLeft="5dp"
-                                android:visibility="gone"
-                                app:srcCompat="@drawable/ic_help_circle" />
-                        </LinearLayout>
-                    </LinearLayout>
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/login_account_price_layout"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal">-->
+                    <!--<TextView-->
+                    <!--android:id="@+id/login_account_price_text"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:visibility="gone"-->
+                    <!--tools:text="(10000.000 USD)" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/main_sub_title_color"
-                                android:textSize="12sp"
-                                android:text="@string/tron_power_text" />
+                    <!--<ImageView-->
+                    <!--android:id="@+id/price_help_image"-->
+                    <!--android:layout_width="15dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_marginLeft="5dp"-->
+                    <!--android:visibility="gone"-->
+                    <!--app:srcCompat="@drawable/ic_help_circle" />-->
+                    <!--</LinearLayout>-->
+                    <!--</LinearLayout>-->
 
-                            <TextView
-                                android:id="@+id/login_frozen_balance_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginRight="5dp"
-                                android:textSize="16sp"
-                                android:textColor="@android:color/white"
-                                tools:text="90,000,000,000" />
-                        </LinearLayout>
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal">-->
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center">-->
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/main_sub_title_color"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:text="@string/tron_power_text" />-->
 
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimaryDark"/>
+                    <!--<TextView-->
+                    <!--android:id="@+id/login_frozen_balance_text"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="2dp"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--tools:text="90,000,000,000" />-->
+                    <!--</LinearLayout>-->
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/main_sub_title_color"
-                                android:textSize="12sp"
-                                android:text="@string/bandwidth_text" />
+                    <!--<View-->
+                    <!--android:layout_width="1dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/colorPrimaryDark"/>-->
 
-                            <TextView
-                                android:id="@+id/login_bandwidth_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dp"
-                                android:layout_marginRight="5dp"
-                                android:textSize="16sp"
-                                android:textColor="@android:color/white"
-                                tools:text="90" />
-                        </LinearLayout>
-                    </LinearLayout>
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:gravity="center">-->
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/main_sub_title_color"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:text="@string/bandwidth_text" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/login_bandwidth_text"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="2dp"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--tools:text="90" />-->
+                    <!--</LinearLayout>-->
+                    <!--</LinearLayout>-->
 
                 </LinearLayout>
             </android.support.design.widget.CollapsingToolbarLayout>
@@ -180,46 +188,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/my_token_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="15dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/my_token_text"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/main_my_token_color"
-                        android:text="@string/my_tokens" />
+                <!--<LinearLayout-->
+                <!--android:id="@+id/my_token_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:paddingLeft="15dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                <!--android:id="@+id/my_token_text"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textColor="@color/main_my_token_color"-->
+                <!--android:text="@string/my_tokens" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/main_my_token_color"
-                        android:text="@string/favorites_text" />
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/main_my_token_color"-->
+                <!--android:text="@string/favorites_text" />-->
 
-                    <CheckBox
-                        android:id="@+id/check_favorite_tokens"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/AppTheme"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="15dp" />
-                </LinearLayout>
+                <!--<CheckBox-->
+                <!--android:id="@+id/check_favorite_tokens"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:theme="@style/AppTheme"-->
+                <!--android:layout_marginLeft="6dp"-->
+                <!--android:layout_marginRight="15dp" />-->
+                <!--</LinearLayout>-->
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/main_border_color" />
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/main_border_color" />-->
 
                 <LinearLayout
                     android:id="@+id/no_token_layout"
@@ -229,22 +238,24 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:visibility="gone">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
-                        android:textSize="20sp"
-                        android:text="@string/no_tokens" />
+                        android:text="@string/no_tokens"
+                        android:textSize="20sp" />
+
                     <Button
                         android:id="@+id/get_token_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:background="@color/token_participate_button_color"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:background="@color/token_participate_button_color"
-                        android:textColor="@android:color/white"
-                        android:text="@string/get_token_text" />
+                        android:text="@string/get_token_text"
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
 
                 <android.support.v7.widget.RecyclerView
@@ -260,8 +271,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            app:srcCompat="@drawable/ic_refresh"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            app:srcCompat="@drawable/ic_refresh" />
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
@@ -269,10 +280,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@android:color/white"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header"
-        android:background="@android:color/white"
         app:itemIconTint="@color/brand_background"
-        app:itemTextColor="@color/brand_background"/>
+        app:itemTextColor="@color/brand_background" />
 
 </android.support.v4.widget.DrawerLayout>
