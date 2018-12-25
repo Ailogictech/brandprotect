@@ -9,6 +9,7 @@ public class Constants {
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z", Locale.US);
 
     public static final DecimalFormat tronBalanceFormat = new DecimalFormat("#,##0.000000");
+    public static final DecimalFormat brandBalanceFormat = new DecimalFormat("#,##0");
     public static final DecimalFormat numberFormat = new DecimalFormat("#,##0");
     public static final DecimalFormat usdFormat = new DecimalFormat("#,##0.000");
     public static final  DecimalFormat percentFormat = new DecimalFormat("#,##0.00");

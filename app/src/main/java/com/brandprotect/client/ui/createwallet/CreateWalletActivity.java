@@ -62,9 +62,9 @@ public class CreateWalletActivity extends CommonActivity implements CreateWallet
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.title_create_wallet);
-        }
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setTitle(R.string.title_create_wallet);
+//        }
 
         mCustomPreference.setMigrationDb(true);
 

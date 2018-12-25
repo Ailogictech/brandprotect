@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingRight="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/certificate_multiple"/>
+        <TextView
+            android:id="@+id/token_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/finestBlack"
+            android:textSize="20sp"
+            tools:text="Choco Token" />
+
+        <TextView
+            android:textColor="@color/finestBlack"
+            android:id="@+id/token_amount_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="1,000,000" />
+
+    </LinearLayout>
+
+    <View
+        android:layerType="software"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/line" />
+</LinearLayout>
