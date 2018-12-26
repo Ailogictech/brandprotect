@@ -24,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,7 +32,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.brandprotect.tronlib.dto.CoinMarketCap;
 import com.brandprotect.client.R;
 import com.brandprotect.client.common.AdapterView;
 import com.brandprotect.client.common.CommonActivity;
@@ -42,6 +40,7 @@ import com.brandprotect.client.common.DividerItemDecoration;
 import com.brandprotect.client.database.model.AccountModel;
 import com.brandprotect.client.tron.WalletAppManager;
 import com.brandprotect.client.ui.address.AddressActivity;
+import com.brandprotect.client.ui.certificate.CertificateDetailActivity;
 import com.brandprotect.client.ui.login.LoginActivity;
 import com.brandprotect.client.ui.main.adapter.MyTokenListAdapter;
 import com.brandprotect.client.ui.main.dto.Frozen;
@@ -50,9 +49,9 @@ import com.brandprotect.client.ui.myaccount.MyAccountActivity;
 import com.brandprotect.client.ui.mytransfer.TransferActivity;
 import com.brandprotect.client.ui.sendtoken.SendTokenActivity;
 import com.brandprotect.client.ui.token.TokenActivity;
+import com.brandprotect.tronlib.dto.CoinMarketCap;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -161,7 +160,11 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
         mMyTokenListView.addItemDecoration(new DividerItemDecoration(0));
         mMyTokenListView.setNestedScrollingEnabled(false);
 
-        mMyTokenListAdapter = new MyTokenListAdapter();
+        mMyTokenListAdapter = new MyTokenListAdapter(v -> {
+            Intent intent = new Intent(MainActivity.this, CertificateDetailActivity.class)
+                    .putExtra(CertificateDetailActivity.CERTIFICATE_INFO, v);
+            startActivity(intent);
+        });
         mMyTokenListView.setAdapter(mMyTokenListAdapter);
         mAdapterView = mMyTokenListAdapter;
 

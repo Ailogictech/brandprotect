@@ -7,131 +7,113 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
-        android:name="com.brandprotect.client.common.CustomApplication"
+        android:name=".common.CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="068249ab59e95265413fc9f8ae65b498539360f9" />
 
-        <activity android:name="com.brandprotect.client.ui.intro.IntroActivity">
+        <activity android:name=".ui.intro.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.brandprotect.client.ui.main.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:theme="@style/MainTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.createwallet.CreateWalletActivity"
+            android:name=".ui.createwallet.CreateWalletActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.importkey.ImportPrivateKeyActivity"
+            android:name=".ui.importkey.ImportPrivateKeyActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.backupaccount.BackupAccountActivity"
+            android:name=".ui.backupaccount.BackupAccountActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.myaccount.MyAccountActivity"
+            android:name=".ui.myaccount.MyAccountActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.address.AddressActivity"
+            android:name=".ui.address.AddressActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.qrscan.QrScanActivity"
+            android:name=".ui.qrscan.QrScanActivity"
             android:theme="@style/AppTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.sendtoken.SendTokenActivity"
+            android:name=".ui.sendtoken.SendTokenActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.about.AboutActivity"
+            android:name=".ui.about.AboutActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.market.MarketActivity"
+            android:name=".ui.market.MarketActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.blockexplorer.BlockExplorerActivity"
+            android:name=".ui.blockexplorer.BlockExplorerActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.more.MoreActivity"
+            android:name=".ui.more.MoreActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.representative.RepresentativeActivity"
+            android:name=".ui.representative.RepresentativeActivity"
             android:theme="@style/MainTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.vote.VoteActivity"
+            android:name=".ui.vote.VoteActivity"
             android:theme="@style/VoteTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.node.NodeActivity"
+            android:name=".ui.node.NodeActivity"
             android:theme="@style/MainTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.requestcoin.RequestCoinActivity"
+            android:name=".ui.requestcoin.RequestCoinActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.opensource.OpenSourceActivity"
+            android:name=".ui.opensource.OpenSourceActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.mytransfer.TransferActivity"
+            android:name=".ui.mytransfer.TransferActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.token.TokenActivity"
+            android:name=".ui.token.TokenActivity"
             android:theme="@style/WalletTheme" />
-
-        <activity android:name="com.brandprotect.client.ui.blockdetail.BlockDetailActivity"
-            android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.token.TokenDetailActivity"
+            android:name=".ui.blockdetail.BlockDetailActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.accountdetail.AccountDetailActivity"
+            android:name=".ui.token.TokenDetailActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.accountdetail.overview.AccountVoteActivity"
+            android:name=".ui.accountdetail.AccountDetailActivity"
             android:theme="@style/WalletTheme" />
-
         <activity
-            android:name="com.brandprotect.client.ui.exchange.ExchangeActivity"
+            android:name=".ui.accountdetail.overview.AccountVoteActivity"
             android:theme="@style/WalletTheme" />
-
+        <activity
+            android:name=".ui.exchange.ExchangeActivity"
+            android:theme="@style/WalletTheme" />
         <activity
             android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="sensor"
             android:theme="@style/FinestWebViewTheme.Light" />
-
+        <activity
+            android:name=".ui.certificate.CertificateDetailActivity"
+            android:label="@string/title_activity_certificate_detail"
+            android:parentActivityName=".common.CommonActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.brandprotect.client.common.CommonActivity" />
+        </activity>
     </application>
 
 </manifest>

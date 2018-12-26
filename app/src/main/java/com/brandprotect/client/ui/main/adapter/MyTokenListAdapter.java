@@ -2,6 +2,7 @@ package com.brandprotect.client.ui.main.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,11 @@ import butterknife.ButterKnife;
 
 public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.MyTokenViewHolder> implements AdapterDataModel<Asset>, AdapterView {
 
-    private List<Asset> mList;
+    private List<Asset> mList = new ArrayList<>();
+    private OnItemClick listener;
 
-    public MyTokenListAdapter() {
-        this.mList = new ArrayList<>();
+    public MyTokenListAdapter(OnItemClick listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -33,14 +35,15 @@ public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_brand_token, null);
 //        v.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT,
 //                RecyclerView.LayoutParams.WRAP_CONTENT));
-        return new MyTokenViewHolder(v);
+        return new MyTokenViewHolder(v, listener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyTokenViewHolder holder, int position) {
         Asset item = mList.get(position);
 
-        holder.tokenNameText.setText(item.getName());
+        holder.tokenNameText.setText(item.getSampleName());
+        holder.tokenNameText.setTag(item.getName());
         holder.tokenAmountText.setText(Constants.brandBalanceFormat.format(item.getBalance()));
     }
 
@@ -96,9 +99,19 @@ public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.
         @BindView(R.id.token_amount_text)
         TextView tokenAmountText;
 
-        public MyTokenViewHolder(View itemView) {
+        public MyTokenViewHolder(View itemView, OnItemClick listener) {
             super(itemView);
+            itemView.setOnClickListener(v -> {
+                Object tag = tokenNameText.getTag();
+                if (tag instanceof String && !TextUtils.isEmpty((CharSequence) tag)) {
+                    listener.onCertificateSelected((String) tag);
+                }
+            });
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface OnItemClick {
+        void onCertificateSelected(String certificateInfo);
     }
 }

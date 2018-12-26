@@ -128,6 +128,7 @@ dependencies {
 
     // butterknife
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
