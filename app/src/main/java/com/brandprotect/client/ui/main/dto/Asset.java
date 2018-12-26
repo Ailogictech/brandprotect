@@ -23,7 +23,7 @@ public class Asset {
         if (name != null && !name.isEmpty()) {
             String[] split = name.split(";");
             if (split.length > 0) {
-                return split[0];
+                return split[1];
             }
         }
         return name;
