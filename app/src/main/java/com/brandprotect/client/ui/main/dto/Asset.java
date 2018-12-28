@@ -22,7 +22,7 @@ public class Asset {
     public String getSampleName() {
         if (name != null && !name.isEmpty()) {
             String[] split = name.split(";");
-            if (split.length > 0) {
+            if (split.length > 1) {
                 return split[1];
             }
         }
