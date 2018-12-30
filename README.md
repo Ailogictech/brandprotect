@@ -12,7 +12,7 @@ A Tron wallet for android.
 <a href="https://play.google.com/store/apps/details?id=com.brandprotect.client"><img src="https://raw.githubusercontent.com/hummatli/MAHAndroidUpdater/master/imgs/google-play-badge.png" height="90px"/></a>
 
 ## Screenshots
-<img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/Ailogictech/brandprotect/blob/e93fac53205f73ac5f4c648b94452d16132ba54d/screenshots/Screenshot_20181016-212549.png" width="250"> <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/device-2018-04-27-215251.png" width="250"><br/>
+<img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/Screenshot_20181016-212549.png" width="250"> <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/device-2018-04-27-215251.png" width="250"><br/>
 <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/device-2018-05-31-123858.png" width="250"> <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/device-2018-05-31-123743.png" width="250"> <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/Screenshot_20181016-212733.png" width="250">
 
 ## Reference
