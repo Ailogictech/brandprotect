@@ -9,7 +9,7 @@
 A Tron wallet for android.
 
 ## Download App in PlayStore
-<a href="https://play.google.com/store/apps/details?id=com.devband.tronwalletforandroid"><img src="https://raw.githubusercontent.com/hummatli/MAHAndroidUpdater/master/imgs/google-play-badge.png" height="90px"/></a>
+<a href="https://play.google.com/store/apps/details?id=com.brandprotect.client"><img src="https://raw.githubusercontent.com/hummatli/MAHAndroidUpdater/master/imgs/google-play-badge.png" height="90px"/></a>
 
 ## Screenshots
 <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/Screenshot_20181016-212549.png" width="250"> <img src="https://github.com/lky1001/tron-android-wallet/blob/develop/screenshots/device-2018-04-27-215251.png" width="250"><br/>
