@@ -13,6 +13,7 @@ Brandprotect is a platform for protection of goods against a counterfeit on the 
 ## Screenshots
 <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/3.png" width="250">
 <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/Ailogictech/brandprotect/blob/develop/scan1.png" width="250">
+<img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-05-31-210614.png" width="250">
 
 
 ## Reference
