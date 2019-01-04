@@ -11,7 +11,8 @@ Brandprotect is a platform for protection of goods against a counterfeit on the 
 <a href="https://play.google.com/store/apps/details?id=com.brandprotect.client"><img src="https://raw.githubusercontent.com/hummatli/MAHAndroidUpdater/master/imgs/google-play-badge.png" height="90px"/></a>
 
 ## Screenshots
-<img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/Screenshot_20181016-212549.png" width="250"> 
+<img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/Ailogictech/brandprotect/blob/develop/scan1.png" width="250">
+
 
 ## Reference
 - https://github.com/tronprotocol/wallet-cli
