@@ -4,9 +4,8 @@
   <img src="https://img.shields.io/badge/LICENSE-Apache--2.0-blue.svg">
 </p>
 
-# Tron Wallet for android
 
-A Tron wallet for android.
+Brandprotect is a platform for protection of goods against a counterfeit on the basis of cryptography and blockchain technology.
 
 ## Download App in PlayStore
 <a href="https://play.google.com/store/apps/details?id=com.brandprotect.client"><img src="https://raw.githubusercontent.com/hummatli/MAHAndroidUpdater/master/imgs/google-play-badge.png" height="90px"/></a>
@@ -30,27 +29,14 @@ A Tron wallet for android.
 
 - Create wallet
 - Import wallet
-- Send tron & token
-- Receive tron & token
+- Send certificate
+- Receive certificate
 - My address QR code
-- My tron balance
-- My tokens
-- My transfer history
-- Vote representative
-- Participate token
-- Block explorer
-- Token list
-- Node list
-- Representative list
-- Tron market listing & price
-- Fingerprint authorization
+-
 
 ## TODO list
 
-- Decentralized exchange
+- 
 - Tron pay
 - BIP 32, 39, 44
 
-## Q&A
-
-- [kakaotalk open chat](https://open.kakao.com/o/gUmVKPS)
