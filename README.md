@@ -14,7 +14,7 @@ Brandprotect is a platform for protection of goods against a counterfeit on the 
 <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/3.png" width="250">
 <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-04-27-215149.png" width="250"> <img src="https://github.com/Ailogictech/brandprotect/blob/develop/scan1.png" width="250">
 <img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/device-2018-05-31-210614.png" width="250">
-
+<img src="https://github.com/Ailogictech/brandprotect/blob/develop/screenshots/photo_2019-01-04_19-21-22.jpg" width="250">
 
 ## Reference
 - https://github.com/tronprotocol/wallet-cli
