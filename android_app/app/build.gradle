@@ -156,6 +156,7 @@ dependencies {
     // http
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
     // grpc
@@ -195,4 +196,7 @@ dependencies {
 
     //image loader
     implementation "com.github.bumptech.glide:glide:4.6.1"
+
+    // qr code
+    implementation 'com.github.blikoon:QRCodeScanner:0.1.2'
 }

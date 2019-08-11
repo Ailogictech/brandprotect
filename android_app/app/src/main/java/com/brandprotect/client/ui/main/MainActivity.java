@@ -1,7 +1,11 @@
 package com.brandprotect.client.ui.main;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -32,12 +36,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.blikoon.qrcodescanner.QrCodeActivity;
 import com.brandprotect.client.R;
 import com.brandprotect.client.common.AdapterView;
 import com.brandprotect.client.common.CommonActivity;
 import com.brandprotect.client.common.Constants;
 import com.brandprotect.client.common.DividerItemDecoration;
 import com.brandprotect.client.database.model.AccountModel;
+import com.brandprotect.client.rest.ConnectToServiceResponse;
+import com.brandprotect.client.rest.WebService;
 import com.brandprotect.client.tron.WalletAppManager;
 import com.brandprotect.client.ui.address.AddressActivity;
 import com.brandprotect.client.ui.certificate.CertificateDetailActivity;
@@ -51,6 +58,7 @@ import com.brandprotect.client.ui.sendtoken.SendTokenActivity;
 import com.brandprotect.client.ui.token.TokenActivity;
 import com.brandprotect.tronlib.dto.CoinMarketCap;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +72,11 @@ import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends CommonActivity implements MainView, NavigationView.OnNavigationItemSelectedListener {
 
@@ -138,6 +151,72 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
 
     private boolean mDoubleBackToExitPressedOnce;
 
+    private static final int CONNECT_SERVICE_REQ_CODE = 5119;
+    private static final int CAMERA_REQUEST_CODE = 8611;
+
+    Retrofit retrofit;
+    WebService webService;
+    ProgressDialog progressDoalog;
+
+    void showWaitDialog() {
+        if (progressDoalog == null) {
+            progressDoalog = new ProgressDialog(this);
+            progressDoalog.setMessage(MainActivity.this.getString(R.string.please_wait));
+            progressDoalog.setTitle(MainActivity.this.getString(R.string.working));
+            progressDoalog.setCancelable(false);
+            progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        }
+
+        progressDoalog.show();
+    }
+
+    void hideWaitDialog() {
+        if (progressDoalog == null) {
+            return;
+        }
+
+        progressDoalog.dismiss();
+    }
+
+    void connectToService(String code) {
+        showWaitDialog();
+        webService.connectToService(code).enqueue(new Callback<ConnectToServiceResponse>() {
+            @Override
+            public void onResponse(Call<ConnectToServiceResponse> call, Response<ConnectToServiceResponse> response) {
+                hideWaitDialog();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Error: response is not success", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if (!response.body().isSuccess()) {
+                    Toast.makeText(MainActivity.this, "Error: wrong code", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                Toast.makeText(MainActivity.this, "Connection successful", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ConnectToServiceResponse> call, Throwable t) {
+                hideWaitDialog();
+                Toast.makeText(MainActivity.this, "Err: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CONNECT_SERVICE_REQ_CODE) {
+            if (data == null) return;
+            String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
+            connectToService(result);
+        }
+
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,6 +225,13 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
         setupDrawerLayout();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://ieo.brandprotect.pro/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        webService = retrofit.create(WebService.class);
 
         mToolbarLayout.setTitle("");
         mToolbar.setTitle("");
@@ -191,7 +277,7 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
 //                    mLoginFrozenBalanceText.setVisibility(View.GONE);
 //                    mLoginBandwidthText.setVisibility(View.GONE);
                     isShow = true;
-                } else if(isShow) {
+                } else if (isShow) {
                     mToolbarLayout.setTitle("");
                     mMainTitleText.setVisibility(View.VISIBLE);
                     brandImage.setVisibility(View.VISIBLE);
@@ -243,28 +329,28 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
 
     private void initAccountList(boolean isCreateOrImport) {
         mMainPresenter.getAccountList()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new SingleObserver<List<AccountModel>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<AccountModel>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-            }
+                    }
 
-            @Override
-            public void onSuccess(List<AccountModel> accountModelList) {
-                initAccountList(accountModelList);
-                if (isCreateOrImport) {
-                    mAccountSpinner.setSelection(mAccountAdapter.getCount() - 1);
-                }
-            }
+                    @Override
+                    public void onSuccess(List<AccountModel> accountModelList) {
+                        initAccountList(accountModelList);
+                        if (isCreateOrImport) {
+                            mAccountSpinner.setSelection(mAccountAdapter.getCount() - 1);
+                        }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                e.printStackTrace();
-                initAccountList(new ArrayList<>());
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                        initAccountList(new ArrayList<>());
+                    }
+                });
     }
 
     private void initAccountList(List<AccountModel> accountModelList) {
@@ -293,51 +379,52 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
             mMainPresenter.getMyAccountInfo();
 
             Single.fromCallable(() -> mMainPresenter.getLoginAccount())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new SingleObserver<AccountModel>() {
-                @Override
-                public void onSubscribe(Disposable d) {
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<AccountModel>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
 
-                }
+                        }
 
-                @Override
-                public void onSuccess(AccountModel loginAccount) {
-                    if (loginAccount == null) {
-                        mNavHeaderText.setText(R.string.navigation_header_title);
-                    } else {
-                        mLoginAccountName = loginAccount.getName();
-                        mNavHeaderText.setText(mLoginAccountName);
-                        mMainTitleText.setText(mLoginAccountName);
-                    }
-                }
+                        @Override
+                        public void onSuccess(AccountModel loginAccount) {
+                            if (loginAccount == null) {
+                                mNavHeaderText.setText(R.string.navigation_header_title);
+                            } else {
+                                mLoginAccountName = loginAccount.getName();
+                                mNavHeaderText.setText(mLoginAccountName);
+                                mMainTitleText.setText(mLoginAccountName);
+                            }
+                        }
 
-                @Override
-                public void onError(Throwable e) {
+                        @Override
+                        public void onError(Throwable e) {
 
-                }
-            });
+                        }
+                    });
 
             mMainPresenter.getAccountList()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe((accountModelList) -> {
-                long id = mMainPresenter.getLoginAccountIndex();
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((accountModelList) -> {
+                        long id = mMainPresenter.getLoginAccountIndex();
 
-                int size = accountModelList.size();
+                        int size = accountModelList.size();
 
-                for (int i = 0; i < size; i++) {
-                    if (id == accountModelList.get(i).getId()) {
-                        if (mAccountSpinner.getSelectedItemPosition() != i) {
-                            mAccountSpinner.setSelection(i);
-                            return;
+                        for (int i = 0; i < size; i++) {
+                            if (id == accountModelList.get(i).getId()) {
+                                if (mAccountSpinner.getSelectedItemPosition() != i) {
+                                    mAccountSpinner.setSelection(i);
+                                    return;
+                                }
+                                break;
+                            }
                         }
-                        break;
-                    }
-                }
 
-                mAccountAdapter.notifyDataSetChanged();
-            }, (e) -> {});
+                        mAccountAdapter.notifyDataSetChanged();
+                    }, (e) -> {
+                    });
 
 //            mShowOnlyFavoritesCheckBox.setChecked(mMainPresenter.getIsFavoritesTokens());
         } else {
@@ -374,7 +461,7 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
 
     @Override
     public void onBackPressed() {
-        if(mDrawer.isDrawerOpen(GravityCompat.START)) {
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawers();
         } else {
             if (mDoubleBackToExitPressedOnce) {
@@ -404,6 +491,26 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
             case R.id.drawer_item_send_tron:
                 startActivity(SendTokenActivity.class);
                 break;
+            case R.id.drawer_item_connect_to_service:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                            Toast.makeText(MainActivity.this, getString(R.string.camera_error_msg),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                                    CAMERA_REQUEST_CODE);
+                        }
+                    } else {
+                        Intent i = new Intent(MainActivity.this, QrCodeActivity.class);
+                        startActivityForResult(i, CONNECT_SERVICE_REQ_CODE);
+                    }
+                } else {
+                    Intent i = new Intent(MainActivity.this, QrCodeActivity.class);
+                    startActivityForResult(i, CONNECT_SERVICE_REQ_CODE);
+                }
+                break;
+
 //            case R.id.drawer_item_vote:
 //                startActivity(VoteActivity.class);
 //                break;
@@ -682,26 +789,26 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
 
                         if (!TextUtils.isEmpty(accountName)) {
                             mMainPresenter.changeLoginAccountName(accountName)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new SingleObserver<Boolean>() {
-                                @Override
-                                public void onSubscribe(Disposable d) {
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new SingleObserver<Boolean>() {
+                                        @Override
+                                        public void onSubscribe(Disposable d) {
 
-                                }
+                                        }
 
-                                @Override
-                                public void onSuccess(Boolean result) {
-                                    if (result) {
-                                        checkLoginState();
-                                    }
-                                }
+                                        @Override
+                                        public void onSuccess(Boolean result) {
+                                            if (result) {
+                                                checkLoginState();
+                                            }
+                                        }
 
-                                @Override
-                                public void onError(Throwable e) {
+                                        @Override
+                                        public void onError(Throwable e) {
 
-                                }
-                            });
+                                        }
+                                    });
                         }
                     }
                 }).show();
