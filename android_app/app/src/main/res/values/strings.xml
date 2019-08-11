@@ -337,4 +337,5 @@
     <string name="title_activity_certificate_detail">CertificateDetailActivity</string>
     <string name="please_wait">Please wait...</string>
     <string name="working">Working...</string>
+    <string name="already_connected">Already connected</string>
 </resources>

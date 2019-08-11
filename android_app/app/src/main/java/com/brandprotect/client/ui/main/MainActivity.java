@@ -42,6 +42,7 @@ import com.brandprotect.client.common.AdapterView;
 import com.brandprotect.client.common.CommonActivity;
 import com.brandprotect.client.common.Constants;
 import com.brandprotect.client.common.DividerItemDecoration;
+import com.brandprotect.client.common.Prefs;
 import com.brandprotect.client.database.model.AccountModel;
 import com.brandprotect.client.rest.ConnectToServiceResponse;
 import com.brandprotect.client.rest.WebService;
@@ -58,7 +59,6 @@ import com.brandprotect.client.ui.sendtoken.SendTokenActivity;
 import com.brandprotect.client.ui.token.TokenActivity;
 import com.brandprotect.tronlib.dto.CoinMarketCap;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,29 +153,31 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
 
     private static final int CONNECT_SERVICE_REQ_CODE = 5119;
     private static final int CAMERA_REQUEST_CODE = 8611;
+    private static final String CONNECTED_TO_WEB_SERVICE = "CONNECTED_TO_WEB_SERVICE";
 
     Retrofit retrofit;
     WebService webService;
-    ProgressDialog progressDoalog;
+    ProgressDialog progressDialog;
+    Prefs prefs;
 
     void showWaitDialog() {
-        if (progressDoalog == null) {
-            progressDoalog = new ProgressDialog(this);
-            progressDoalog.setMessage(MainActivity.this.getString(R.string.please_wait));
-            progressDoalog.setTitle(MainActivity.this.getString(R.string.working));
-            progressDoalog.setCancelable(false);
-            progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(MainActivity.this.getString(R.string.please_wait));
+            progressDialog.setTitle(MainActivity.this.getString(R.string.working));
+            progressDialog.setCancelable(false);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         }
 
-        progressDoalog.show();
+        progressDialog.show();
     }
 
     void hideWaitDialog() {
-        if (progressDoalog == null) {
+        if (progressDialog == null) {
             return;
         }
 
-        progressDoalog.dismiss();
+        progressDialog.dismiss();
     }
 
     void connectToService(String code) {
@@ -194,7 +196,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
                     return;
                 }
 
-                Toast.makeText(MainActivity.this, "Connection successful", Toast.LENGTH_SHORT).show();
+                prefs.save(CONNECTED_TO_WEB_SERVICE, true);
+                Toast.makeText(MainActivity.this, "Connection successful", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -225,6 +228,8 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
         setupDrawerLayout();
+
+        prefs = Prefs.with(this);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://ieo.brandprotect.pro/")
@@ -492,6 +497,12 @@ public class MainActivity extends CommonActivity implements MainView, Navigation
                 startActivity(SendTokenActivity.class);
                 break;
             case R.id.drawer_item_connect_to_service:
+                if (prefs.getBoolean(CONNECTED_TO_WEB_SERVICE, false)) {
+                    Toast.makeText(this, MainActivity.this.getString(R.string.already_connected), Toast.LENGTH_LONG).show();
+                    break;
+                }
+
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
