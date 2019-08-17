@@ -30,7 +30,7 @@ public class CertificateDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Certificate details");
         String stringExtra = getIntent().getStringExtra(CERTIFICATE_INFO);
-        String[] split = stringExtra.split(";");
+        String[] split = stringExtra.split("XZ");
         if (split.length > 0 && split.length == 3) {
             String brand = split[0];
             String productName = split[1];
