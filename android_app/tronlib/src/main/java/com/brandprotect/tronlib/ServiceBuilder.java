@@ -47,7 +47,11 @@ public class ServiceBuilder {
     public static <T> T createService(Class<T> serviceClass, String baseUrl,
             HttpLoggingInterceptor httpLoggingInterceptor, boolean userBadSslSocketFactory,
             int connectTimeoutInSec, int readTimeoutInSec, int writeTimeoutInSec) {
-        OkHttpClient okHttpClient = getClient(userBadSslSocketFactory, httpLoggingInterceptor,
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient okHttpClient = getClient(userBadSslSocketFactory, interceptor,
                 connectTimeoutInSec, readTimeoutInSec, writeTimeoutInSec);
 
         RETROFIT_BUILDER.client(okHttpClient);
