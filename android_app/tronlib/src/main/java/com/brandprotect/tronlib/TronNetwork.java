@@ -108,6 +108,10 @@ public class TronNetwork {
         return mTokenService.getTokenDetail(tokenName);
     }
 
+    public Single<Tokens> getTokenDetailById(String tokenId) {
+        return mTokenService.getTokenDetailById(tokenId);
+    }
+
     public Single<TokenHolders> getTokenHolders(String tokenName, long start, int limit, String sort) {
         return mTokenService.getTokenHolders(tokenName, start, limit, sort);
     }

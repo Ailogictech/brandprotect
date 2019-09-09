@@ -14,6 +14,9 @@ import org.tron.protos.Protocol;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Utils {
 
     public static String getContractTypeString(Context context, int contractType) {
@@ -88,5 +91,18 @@ public class Utils {
             intent.putExtra(BlockDetailActivity.EXTRA_BLOCK_NUMBER, blockNum);
             context.startActivity(intent);
         });
+    }
+
+    @Getter
+    @Setter
+    public static class ParsedToken {
+        String name;
+    }
+
+    // todo implement me. Parse token name from "abcZX123-xxx" to {name: abc, id: 123, description: xxx}
+    public static ParsedToken parseTokenName(String name) {
+        ParsedToken parsedToken = new ParsedToken();
+        parsedToken.setName(name);
+        return parsedToken;
     }
 }

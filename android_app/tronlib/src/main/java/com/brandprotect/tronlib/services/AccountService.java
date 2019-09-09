@@ -13,8 +13,8 @@ import retrofit2.http.Query;
 
 public interface AccountService {
 
-    @GET("api/account/{address}")
-    Single<Account> getAccount(@Path("address") String address);
+    @GET("api/account")
+    Single<Account> getAccount(@Query("address") String address);
 
     @GET("api/account")
     Single<TronAccounts> getAccounts(@Query("start") long start, @Query("limit") int limit,

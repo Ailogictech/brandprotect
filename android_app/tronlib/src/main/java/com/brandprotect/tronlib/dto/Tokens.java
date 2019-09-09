@@ -15,4 +15,6 @@ public class Tokens {
     private int total;
 
     private List<Token> data;
+
+    private int totalAll;
 }

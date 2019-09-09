@@ -3,6 +3,7 @@ package com.brandprotect.client.ui.main.adapter;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +13,28 @@ import com.brandprotect.client.R;
 import com.brandprotect.client.common.AdapterDataModel;
 import com.brandprotect.client.common.AdapterView;
 import com.brandprotect.client.common.Constants;
+import com.brandprotect.client.common.Utils;
 import com.brandprotect.client.ui.main.dto.Asset;
+import com.brandprotect.tronlib.Hosts;
+import com.brandprotect.tronlib.ServiceBuilder;
+import com.brandprotect.tronlib.services.TokenService;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.MyTokenViewHolder> implements AdapterDataModel<Asset>, AdapterView {
 
     private List<Asset> mList = new ArrayList<>();
     private OnItemClick listener;
+    private TokenService service;
 
     public MyTokenListAdapter(OnItemClick listener) {
+        service = ServiceBuilder.createService(TokenService.class, Hosts.TRONSCAN_API);
         this.listener = listener;
     }
 
@@ -42,9 +51,17 @@ public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.
     public void onBindViewHolder(@NonNull MyTokenViewHolder holder, int position) {
         Asset item = mList.get(position);
 
-        holder.tokenNameText.setText(item.getSampleName());
+        holder.tokenNameText.setText("Cert. № " + item.getSampleName());
         holder.tokenNameText.setTag(item.getName());
         holder.tokenAmountText.setText(Constants.brandBalanceFormat.format(item.getBalance()));
+
+        service.getTokenDetailById(item.getSampleName())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((tokens, throwable) -> {
+            if (throwable == null && tokens != null) {
+                holder.tokenNameText.setText(Utils.parseTokenName(tokens.getData().get(0).getName()).getName());
+            }
+        });
     }
 
     @Override

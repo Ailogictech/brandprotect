@@ -15,8 +15,11 @@ public interface TokenService {
     Single<Tokens> getTokens(@Query("start") long start, @Query("limit") int limit,
             @Query("sort") String sort, @Query("status") String status);
 
-    @GET("api/token/{name}")
-    Single<Token> getTokenDetail(@Path("name") String tokenName);
+    @GET("api/token")
+    Single<Token> getTokenDetail(@Query("name") String tokenName);
+
+    @GET("api/token")
+    Single<Tokens> getTokenDetailById(@Query("id") String tokenId);
 
     @GET("api/token/{name}/address")
     Single<TokenHolders> getTokenHolders(@Path("name") String tokenName, @Query("start") long start,
