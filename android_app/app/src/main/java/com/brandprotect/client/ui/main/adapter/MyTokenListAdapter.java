@@ -60,6 +60,7 @@ public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.
                 .subscribe((tokens, throwable) -> {
             if (throwable == null && tokens != null) {
                 holder.tokenNameText.setText(Utils.parseTokenName(tokens.getData().get(0).getName()).getName());
+                holder.tokenNameText.setTag(tokens.getData().get(0).getName());
             }
         });
     }

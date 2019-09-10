@@ -58,6 +58,7 @@ import com.brandprotect.client.ui.mytransfer.TransferActivity;
 import com.brandprotect.client.ui.sendtoken.SendTokenActivity;
 import com.brandprotect.client.ui.token.TokenActivity;
 import com.brandprotect.tronlib.dto.CoinMarketCap;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
