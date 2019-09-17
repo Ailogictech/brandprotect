@@ -18,22 +18,22 @@
         android:id="@+id/brandTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="220dp"
         tools:text="asdasdas" />
 
     <TextView
         android:id="@+id/productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="250dp"
         tools:text="asdasdas" />
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="280dp"
         tools:text="asdasdas" />
 </FrameLayout>

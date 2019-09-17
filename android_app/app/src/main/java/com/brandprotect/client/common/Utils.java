@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.brandprotect.client.R;
 import com.brandprotect.client.ui.accountdetail.AccountDetailActivity;
 import com.brandprotect.client.ui.blockdetail.BlockDetailActivity;
+import com.google.gson.Gson;
 
 import org.tron.protos.Protocol;
 
@@ -96,13 +98,30 @@ public class Utils {
     @Getter
     @Setter
     public static class ParsedToken {
+        String brand;
         String name;
+        String count;
+        String date;
     }
 
     // todo implement me. Parse token name from "abcZX123-xxx" to {name: abc, id: 123, description: xxx}
     public static ParsedToken parseTokenName(String name) {
         ParsedToken parsedToken = new ParsedToken();
-        parsedToken.setName(name);
+        String[] parsed = name.split("XZ");
+        if (parsed.length == 4) {
+            parsedToken.setBrand(parsed[0]);
+            parsedToken.setName(parsed[1]);
+            parsedToken.setCount(parsed[2]);
+            parsedToken.setDate(String.valueOf(
+                    parsed[3].charAt(0) + parsed[3].charAt(1)
+                            + "-" +
+                            parsed[3].charAt(2) + parsed[3].charAt(3)
+                            + "-" +
+                            parsed[3].charAt(4) + parsed[3].charAt(5) + parsed[3].charAt(6) + parsed[3].charAt(7)
+            ));
+        } else {
+            parsedToken.setName(name);
+        }
         return parsedToken;
     }
 }

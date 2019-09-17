@@ -3,10 +3,12 @@ package com.brandprotect.client.ui.certificate;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.brandprotect.client.R;
+import com.brandprotect.client.common.Utils;
 import com.brandprotect.tronlib.Hosts;
 import com.brandprotect.tronlib.ServiceBuilder;
 import com.brandprotect.tronlib.services.TokenService;
@@ -33,17 +35,11 @@ public class CertificateDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Certificate details");
         String stringExtra = getIntent().getStringExtra(CERTIFICATE_INFO);
-        String[] split = stringExtra.split("XZ");
-        if (split.length > 0 && split.length == 3) {
-            String brand = split[0];
-            String productName = split[1];
-            String description = split[2];
-            brandTitle.setText(brand);
-            productNameTv.setText(productName);
-            descriptionTv.setText(description);
-        } else {
-            brandTitle.setText(stringExtra);
-        }
+        Utils.ParsedToken parsedToken = Utils.parseTokenName(stringExtra);
+
+        brandTitle.setText(Html.fromHtml("<b>Brand:</b> " + parsedToken.getBrand()));
+        productNameTv.setText(Html.fromHtml("<b>Name of product:</b> " + parsedToken.getName()));
+        descriptionTv.setText(Html.fromHtml("<b>Count:</b> " + parsedToken.getCount() + "<br/><br/>" + "<b>Date:</b> " + parsedToken.getDate()));
     }
 
     @Override
