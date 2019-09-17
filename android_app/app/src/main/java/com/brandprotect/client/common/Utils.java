@@ -113,11 +113,11 @@ public class Utils {
             parsedToken.setName(parsed[1]);
             parsedToken.setCount(parsed[2]);
             parsedToken.setDate(String.valueOf(
-                    parsed[3].charAt(0) + parsed[3].charAt(1)
+                    String.valueOf(parsed[3].charAt(0)) + String.valueOf(parsed[3].charAt(1))
                             + "-" +
-                            parsed[3].charAt(2) + parsed[3].charAt(3)
+                            String.valueOf(parsed[3].charAt(2)) + String.valueOf(parsed[3].charAt(3))
                             + "-" +
-                            parsed[3].charAt(4) + parsed[3].charAt(5) + parsed[3].charAt(6) + parsed[3].charAt(7)
+                            String.valueOf(parsed[3].charAt(4)) + String.valueOf(parsed[3].charAt(5)) + String.valueOf(parsed[3].charAt(6)) + String.valueOf(parsed[3].charAt(7))
             ));
         } else {
             parsedToken.setName(name);
