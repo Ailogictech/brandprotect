@@ -102,13 +102,14 @@ public class Utils {
         String name;
         String count;
         String date;
+        String accountBalance;
     }
 
     // todo implement me. Parse token name from "abcZX123-xxx" to {name: abc, id: 123, description: xxx}
     public static ParsedToken parseTokenName(String name) {
         ParsedToken parsedToken = new ParsedToken();
         String[] parsed = name.split("XZ");
-        if (parsed.length == 4) {
+        if (parsed.length >= 4) {
             parsedToken.setBrand(parsed[0]);
             parsedToken.setName(parsed[1]);
             parsedToken.setCount(parsed[2]);
@@ -119,6 +120,10 @@ public class Utils {
                             + "-" +
                             String.valueOf(parsed[3].charAt(4)) + String.valueOf(parsed[3].charAt(5)) + String.valueOf(parsed[3].charAt(6)) + String.valueOf(parsed[3].charAt(7))
             ));
+
+            if (parsed.length == 5) {
+                parsedToken.setAccountBalance(parsed[4]);
+            }
         } else {
             parsedToken.setName(name);
         }

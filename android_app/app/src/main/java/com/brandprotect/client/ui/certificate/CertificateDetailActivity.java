@@ -39,7 +39,7 @@ public class CertificateDetailActivity extends AppCompatActivity {
 
         brandTitle.setText(Html.fromHtml("<b>Brand:</b> " + parsedToken.getBrand()));
         productNameTv.setText(Html.fromHtml("<b>Name of product:</b> " + parsedToken.getName()));
-        descriptionTv.setText(Html.fromHtml("<b>Count:</b> " + parsedToken.getCount() + "<br/><br/>" + "<b>Date:</b> " + parsedToken.getDate()));
+        descriptionTv.setText(Html.fromHtml("<b>Count:</b> " + parsedToken.getAccountBalance() + "<br/><br/>" + "<b>Date:</b> " + parsedToken.getDate()));
     }
 
     @Override

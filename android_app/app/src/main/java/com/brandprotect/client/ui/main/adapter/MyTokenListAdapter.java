@@ -58,11 +58,11 @@ public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.
         service.getTokenDetailById(item.getSampleName())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((tokens, throwable) -> {
-            if (throwable == null && tokens != null) {
-                holder.tokenNameText.setText(Utils.parseTokenName(tokens.getData().get(0).getName()).getName());
-                holder.tokenNameText.setTag(tokens.getData().get(0).getName());
-            }
-        });
+                    if (throwable == null && tokens != null) {
+                        holder.tokenNameText.setText(Utils.parseTokenName(tokens.getData().get(0).getName()).getName());
+                        holder.tokenNameText.setTag(tokens.getData().get(0).getName() + "XZ" + Constants.brandBalanceFormat.format(item.getBalance()));
+                    }
+                });
     }
 
     @Override
