@@ -17,6 +17,7 @@ public class Constants {
     public static final String TRON_SYMBOL = "TRX";
     public static final double ONE_TRX = 1_000_000;
     public static final int TRX_DECIMALS = 6;
+    public static final int HARDCODED_DECIMALS_DIVIDER = 10;
     public static final String PREFIX_ACCOUNT_NAME = "Account";
     public static final long FREEZE_DURATION = 3;
 

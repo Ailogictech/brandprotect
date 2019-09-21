@@ -50,6 +50,7 @@ public class MyTokenListAdapter extends RecyclerView.Adapter<MyTokenListAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyTokenViewHolder holder, int position) {
         Asset item = mList.get(position);
+        item.setBalance(item.getBalance() / Constants.HARDCODED_DECIMALS_DIVIDER);
 
         holder.tokenNameText.setText("Cert. № " + item.getSampleName());
         holder.tokenNameText.setTag(item.getName());
